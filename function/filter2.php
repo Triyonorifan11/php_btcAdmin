@@ -28,6 +28,11 @@ function filter_harga_idr()
     return "hargaidr BETWEEN '" . $_GET['start_harga_idr'] . "' AND '" . $_GET['end_harga_idr'] . "'";
 }
 
+function filter_harga_usd()
+{
+    return "hargausdt BETWEEN '" . $_GET['start_harga_usd'] . "' AND '" . $_GET['end_harga_usd'] . "'";
+}
+
 // sambung query sesuai filter
 function generate_query(array $types)
 {
@@ -61,12 +66,18 @@ function get_filter_data()
     $page = $_GET['halaman'] ?? 1;
     $start_date = $_GET['start_date'] ?? null;
     $end_date = $_GET['end_date'] ?? null;
+
     $level = $_GET['level'] ?? null;
     $jenis = $_GET['jenis'] ?? null;
+
     $start_sinyal = $_GET['start_sinyal'] ?? null;
     $end_sinyal = $_GET['end_sinyal'] ?? null;
+
     $start_harga_idr = $_GET['start_harga_idr'] ?? null;
     $end_harga_idr = $_GET['end_harga_idr'] ?? null;
+
+    $start_harga_usd = $_GET['start_harga_usd'] ?? null;
+    $end_harga_usd = $_GET['end_harga_usd'] ?? null;
 
     $q_all = "";
     $filter_type = [];
@@ -92,6 +103,11 @@ function get_filter_data()
     if ((isset($start_harga_idr) && $start_harga_idr != "") || (isset($end_harga_idr) && $end_harga_idr != "")) {
         $filter_type['hargaidr'] = 'filter_harga_idr';
     }
+
+    if ((isset($start_harga_usd) && $start_harga_usd != "") || (isset($end_harga_usd) && $end_harga_usd != "")) {
+        $filter_type['hargausdt'] = 'filter_harga_usd';
+    }
+
 
 
     $q_all = generate_query($filter_type);

@@ -188,6 +188,21 @@ $ops_sinyal_end = getSinyal();
                                 </section>
                                 <!-- endfilter Harga IDR -->
 
+                                <!-- filter Harga USD -->
+                                <label for="" class="">Filter Harga USD $</label>
+                                <section class="col-12 d-flex">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="addon-wrapping">from $</span>
+                                        <input type="number" class="form-control" name="start_harga_usd" value="<?= $_GET['start_harga_usd']; ?>">
+                                    </div>
+
+                                    <div class="input-group mb-3 mx-1">
+                                        <span class="input-group-text" id="addon-wrapping">to $</span>
+                                        <input type="number" class="form-control" name="end_harga_usd" value="<?= $_GET['end_harga_usd']; ?>">
+                                    </div>
+                                </section>
+                                <!-- end fiter Harga USD -->
+
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

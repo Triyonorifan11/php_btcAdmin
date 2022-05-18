@@ -70,17 +70,23 @@ function pagination_links($page)
 
     $startCheck = isset($_GET['start_date']) ? "&start_date=" . $_GET['start_date'] : "";
     $endCheck = isset($_GET['end_date']) ? "&end_date=" . $_GET['end_date'] : "";
+
     $levelCheck = isset($_GET['level']) ? "&level=" . $_GET['level'] : "";
     $filterTrue = isset($_GET['filter']) ? "&filter=" . $_GET['filter'] : "";
     $jenis = isset($_GET['jenis']) ? "&jenis=" . $_GET['jenis'] : "";
     $search = isset($_GET['keysearch']) ? "&keysearch=" . $_GET['keysearch'] : "";
+
     $start_sinyal = isset($_GET['start_sinyal']) ? "&start_sinyal=" . $_GET['start_sinyal'] : "";
     $end_sinyal = isset($_GET['end_sinyal']) ? "&end_sinyal=" . $_GET['end_sinyal'] : "";
+
     $start_harga_idr = isset($_GET['start_harga_idr']) ? "&start_harga_idr=" . $_GET['start_harga_idr'] : "";
     $end_harga_idr = isset($_GET['end_harga_idr']) ? "&end_harga_idr=" . $_GET['end_harga_idr'] : "";
 
+    $start_harga_usd = isset($_GET['start_harga_usd']) ? "&start_harga_usd=" . $_GET['start_harga_usd'] : "";
+    $end_harga_usd = isset($_GET['end_harga_usd']) ? "&end_harga_usd=" . $_GET['end_harga_usd'] : "";
+
     $params = "?halaman=$page" . $filterTrue . $startCheck . $endCheck . $levelCheck . $search . $jenis .
-        $start_sinyal . $end_sinyal . $start_harga_idr . $end_harga_idr;
+        $start_sinyal . $end_sinyal . $start_harga_idr . $end_harga_idr . $start_harga_usd . $end_harga_usd;
 
 
     return $params;
