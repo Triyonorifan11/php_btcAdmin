@@ -104,12 +104,12 @@ $ops_sinyal_end = getSinyal();
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
+                    <div class="modal-content" style="height: 90vh; ">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Filter</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body" style="overflow-y:scroll ;">
                             <form class="" method="GET">
                                 <input type="hidden" name="filter" value="true">
                                 <label for="">Filter Tanggal</label>
@@ -177,12 +177,12 @@ $ops_sinyal_end = getSinyal();
                                 <label for="" class="">Filter Harga IDR</label>
                                 <section class="col-12 d-flex">
                                     <div class="input-group mb-3">
-                                        <span class="input-group-text" id="addon-wrapping">from IDR</span>
+                                        <span class="input-group-text" id="addon-wrapping">from Rp</span>
                                         <input type="number" class="form-control" name="start_harga_idr" value="<?= $_GET['start_harga_idr']; ?>">
                                     </div>
 
                                     <div class="input-group mb-3 mx-1">
-                                        <span class="input-group-text" id="addon-wrapping">to IDR</span>
+                                        <span class="input-group-text" id="addon-wrapping">to Rp</span>
                                         <input type="number" class="form-control" name="end_harga_idr" value="<?= $_GET['end_harga_idr']; ?>">
                                     </div>
                                 </section>
@@ -202,6 +202,36 @@ $ops_sinyal_end = getSinyal();
                                     </div>
                                 </section>
                                 <!-- end fiter Harga USD -->
+
+                                <!-- filter Vol IDR -->
+                                <label for="" class="">Filter Volume IDR Rp</label>
+                                <section class="col-12 d-flex">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="addon-wrapping">from Rp</span>
+                                        <input type="number" class="form-control" name="start_vol_idr" value="<?= $_GET['start_vol_idr']; ?>">
+                                    </div>
+
+                                    <div class="input-group mb-3 mx-1">
+                                        <span class="input-group-text" id="addon-wrapping">to Rp</span>
+                                        <input type="number" class="form-control" name="end_vol_idr" value="<?= $_GET['end_vol_idr']; ?>">
+                                    </div>
+                                </section>
+                                <!-- end filter Vol IDR -->
+
+                                <!-- filter Vol USD -->
+                                <label for="" class="">Filter Volume USD $</label>
+                                <section class="col-12 d-flex">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="addon-wrapping">from $</span>
+                                        <input type="number" class="form-control" name="start_vol_usd" value="<?= $_GET['start_vol_usd']; ?>">
+                                    </div>
+
+                                    <div class="input-group mb-3 mx-1">
+                                        <span class="input-group-text" id="addon-wrapping">to $</span>
+                                        <input type="number" class="form-control" name="end_vol_usd" value="<?= $_GET['end_vol_usd']; ?>">
+                                    </div>
+                                </section>
+                                <!-- end filter Vol USD -->
 
                         </div>
                         <div class="modal-footer">

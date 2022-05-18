@@ -85,8 +85,15 @@ function pagination_links($page)
     $start_harga_usd = isset($_GET['start_harga_usd']) ? "&start_harga_usd=" . $_GET['start_harga_usd'] : "";
     $end_harga_usd = isset($_GET['end_harga_usd']) ? "&end_harga_usd=" . $_GET['end_harga_usd'] : "";
 
+    $start_vol_idr = isset($_GET['start_vol_idr']) ? "&start_vol_idr=" . $_GET['start_vol_idr'] : "";
+    $end_vol_idr = isset($_GET['end_vol_idr']) ? "&end_vol_idr=" . $_GET['end_vol_idr'] : "";
+
+    $start_vol_usd = isset($_GET['start_vol_usd']) ? "&start_vol_usd=" . $_GET['start_vol_usd'] : "";
+    $end_vol_usd = isset($_GET['end_vol_usd']) ? "&end_vol_usd=" . $_GET['end_vol_usd'] : "";
+
     $params = "?halaman=$page" . $filterTrue . $startCheck . $endCheck . $levelCheck . $search . $jenis .
-        $start_sinyal . $end_sinyal . $start_harga_idr . $end_harga_idr . $start_harga_usd . $end_harga_usd;
+        $start_sinyal . $end_sinyal . $start_harga_idr . $end_harga_idr . $start_harga_usd . $end_harga_usd
+        . $start_vol_idr . $end_vol_idr . $start_vol_usd . $end_vol_usd;
 
 
     return $params;

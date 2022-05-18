@@ -33,11 +33,21 @@ function filter_harga_usd()
     return "hargausdt BETWEEN '" . $_GET['start_harga_usd'] . "' AND '" . $_GET['end_harga_usd'] . "'";
 }
 
+function filter_vol_idr()
+{
+    return "volidr BETWEEN '" . $_GET['start_vol_idr'] . "' AND '" . $_GET['end_vol_idr'] . "'";
+}
+
+function filter_vol_usd()
+{
+    return "volusdt BETWEEN '" . $_GET['start_vol_usd'] . "' AND '" . $_GET['end_vol_usd'] . "'";
+}
+
 // sambung query sesuai filter
-function generate_query(array $types)
+function generate_query(array $types, $sort)
 {
     if (empty($types)) {
-        $full_query = "SELECT * from btc order by id desc";
+        $full_query = "SELECT * from btc order by $sort asc";
     } else {
         $base_query = "SELECT * from btc WHERE ";
         $full_query = $base_query;
@@ -79,8 +89,16 @@ function get_filter_data()
     $start_harga_usd = $_GET['start_harga_usd'] ?? null;
     $end_harga_usd = $_GET['end_harga_usd'] ?? null;
 
+    $start_vol_idr = $_GET['start_vol_idr'] ?? null;
+    $end_vol_idr = $_GET['end_vol_idr'] ?? null;
+
+    $start_vol_usd = $_GET['start_vol_usd'] ?? null;
+    $end_vol_usd = $_GET['end_vol_usd'] ?? null;
+
     $q_all = "";
     $filter_type = [];
+
+    $filter_sort = "id";
 
     if ((isset($start_date) && $start_date != "") || (isset($end_date) && $end_date != "")) {
         // array_push($filter_type, "tanggal");
@@ -98,19 +116,32 @@ function get_filter_data()
 
     if ((isset($start_sinyal) && $start_sinyal != "") || (isset($end_sinyal) && $end_sinyal != "")) {
         $filter_type['sinyal'] = 'filter_sinyal';
+        $filter_sort = "sinyal";
     }
 
     if ((isset($start_harga_idr) && $start_harga_idr != "") || (isset($end_harga_idr) && $end_harga_idr != "")) {
         $filter_type['hargaidr'] = 'filter_harga_idr';
+        $filter_sort = "hargaidr";
     }
 
     if ((isset($start_harga_usd) && $start_harga_usd != "") || (isset($end_harga_usd) && $end_harga_usd != "")) {
         $filter_type['hargausdt'] = 'filter_harga_usd';
+        $filter_sort = "hargausdt";
+    }
+
+    if ((isset($start_vol_idr) && $start_vol_idr != "") || (isset($end_vol_idr) && $end_vol_idr != "")) {
+        $filter_type['volidr'] = 'filter_vol_idr';
+        $filter_sort = "volidr";
+    }
+
+    if ((isset($start_vol_usd) && $start_vol_usd != "") || (isset($end_vol_usd) && $end_vol_usd != "")) {
+        $filter_type['volusdt'] = 'filter_vol_usd';
+        $filter_sort = "volusdt";
     }
 
 
 
-    $q_all = generate_query($filter_type);
+    $q_all = generate_query($filter_type, $filter_sort);
     $p_info = pagination_info($page, $q_all);
 
     $q_one = $q_all .  " limit " . $p_info['first'] . "," . $p_info['batas'];
@@ -120,7 +151,8 @@ function get_filter_data()
     return [
         'show' => $show_limit,
         'pagination_info' => $p_info,
-        'query' => $q_all
+        'query' => $q_all,
+        'sort' => $filter_sort
     ];
 }
 
