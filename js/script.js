@@ -1,6 +1,3 @@
-// const keysearch = document.getElementById('keysearch');
-// const button_search = document.getElementById('button-search');
-// const table = document.getElementById('table');
 const box_autocomplete = document.getElementById('box-autocomplete');
 const body_autocomplete = document.getElementById('body-autocomplete');
 
@@ -24,9 +21,18 @@ function renderAutoComplete(container, target, data) {
 
     data.forEach((value, index) => {
         // console.log(value);
-        let el = `<div>${value.id}</div>`
+        let el = `
+        <div onclick="showData(${value.id})" class="d-flex" style="cursor : pointer">
+            <div>${value.id} | </div> <div> ${value.level} | </div> <div> ${value.jenis}</div>
+        </div>
+        `
         html += el;
     })
 
     target.innerHTML = html;
+}
+
+function showData(id) {
+    console.log("oke");
+    window.location.href = "http://localhost:1109/pemWeb/btc?id=" + id
 }

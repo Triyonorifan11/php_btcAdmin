@@ -10,6 +10,8 @@ if (!empty($_GET)) {
         $data = get_filter_data();
     } else if (isset($_GET['keysearch'])) {
         $data = search($_GET['keysearch']);
+    } else if (isset($_GET['id'])) {
+        $data = getByid($_GET['id']);
     } else if (isset($_GET['halaman'])) {
         $data = pagination($_GET['halaman']);
     }
@@ -34,8 +36,7 @@ $ops_level = getLevel();
 $ops_jenis = getJenis();
 $ops_sinyal_start = getSinyal();
 $ops_sinyal_end = getSinyal();
-$ops_harga_start = getHargaIdr();
-$ops_harga_end = getHargaIdr();
+
 
 
 
@@ -97,6 +98,7 @@ $ops_harga_end = getHargaIdr();
             <button type="button" class="btn btn-primary me-1" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 <i class="bi bi-funnel"></i>
             </button>
+            <!-- href relative -->
             <a href="http://localhost:1109/pemWeb/btc/" class="btn btn-danger me-auto"><i class="bi bi-arrow-clockwise"></i> Reset</a>
 
             <!-- Modal -->
@@ -158,6 +160,7 @@ $ops_harga_end = getHargaIdr();
                                                 <option <?= isset($_GET['start_sinyal']) && $_GET['start_sinyal'] == $option_sinyal['sinyal'] ? "selected" : ""; ?> value="<?= $option_sinyal['sinyal']; ?>"><?= $option_sinyal['sinyal']; ?></option>
                                             <?php endwhile; ?>
                                         </select>
+
                                     </div>
                                     <div class="input-group mb-3 mx-1">
                                         <span class="input-group-text" id="addon-wrapping">to</span>
@@ -175,23 +178,12 @@ $ops_harga_end = getHargaIdr();
                                 <section class="col-12 d-flex">
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="addon-wrapping">from IDR</span>
-
-                                        <select class="form-select" aria-label="Default select example" name="start_harga_idr">
-                                            <option <?= isset($_GET['start_harga_idr']) ? "" : "selected"; ?> value="">Semua</option>
-                                            <?php while ($option_harga_start = mysqli_fetch_array($ops_harga_start)) : ?>
-                                                <option <?= isset($_GET['start_harga_idr']) && $_GET['start_harga_idr'] == $option_harga_start['hargaidr'] ? "selected" : ""; ?> value="<?= $option_harga_start['hargaidr']; ?>">Rp <?= $option_harga_start['hargaidr']; ?></option>
-                                            <?php endwhile; ?>
-                                        </select>
+                                        <input type="number" class="form-control" name="start_harga_idr" value="<?= $_GET['start_harga_idr']; ?>">
                                     </div>
 
                                     <div class="input-group mb-3 mx-1">
                                         <span class="input-group-text" id="addon-wrapping">to IDR</span>
-                                        <select class="form-select" aria-label="Default select example" name="end_harga_idr">
-                                            <option <?= isset($_GET['end_harga_idr']) ? "" : "selected"; ?> value="">Semua</option>
-                                            <?php while ($option_harga_end = mysqli_fetch_array($ops_harga_end)) : ?>
-                                                <option <?= isset($_GET['end_harga_idr']) && $_GET['end_harga_idr'] == $option_harga_end['hargaidr'] ? "selected" : ""; ?> value="<?= $option_harga_end['hargaidr']; ?>">Rp <?= $option_harga_end['hargaidr']; ?></option>
-                                            <?php endwhile; ?>
-                                        </select>
+                                        <input type="number" class="form-control" name="end_harga_idr" value="<?= $_GET['end_harga_idr']; ?>">
                                     </div>
                                 </section>
                                 <!-- endfilter Harga IDR -->
@@ -210,10 +202,10 @@ $ops_harga_end = getHargaIdr();
             <form action="" method="GET" class="d-flex flex-column col-lg-3 col-md-6 col-sm-12 position-relative">
                 <!-- <img src="images/loader.gif" alt="" class="col-2 loader" id="loader" style="display: none;"> -->
                 <div class="d-flex ">
-                    <input class="form-control me-2" id="keysearch" type="text" name="keysearch" placeholder="Cari id" size="10" autofocus aria-label="Search" autocomplete="off">
+                    <input class="form-control me-2" id="keysearch" type="text" name="keysearch" placeholder="<?= isset($_GET['id']) ? "id = " . $_GET['id'] : "Cari id/level/jenis"; ?>" size="10" autofocus aria-label="Search" autocomplete="off">
                     <button class="btn btn-outline-success" id="button-search" type="submit"><i class="bi bi-search"></i></button>
                 </div>
-                <div class="card" style="position:absolute;top:45px; display: none; overflow-y:scroll ; height: 300px;" id="box-autocomplete">
+                <div class="card" style="position:absolute;top:45px; display: none;" id="box-autocomplete">
                     <div class="card-body" id="body-autocomplete">
                     </div>
                 </div>
@@ -518,7 +510,7 @@ $ops_harga_end = getHargaIdr();
 
     </div>
 
-    <script src="js/script.js"></script>
+    <script src="js/script.js?id=1"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
 

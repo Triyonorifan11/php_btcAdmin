@@ -31,22 +31,25 @@ function filter_harga_idr()
 // sambung query sesuai filter
 function generate_query(array $types)
 {
-    $base_query = "SELECT * from btc WHERE ";
-    $full_query = $base_query;
-    $suffix = " order by id desc";
+    if (empty($types)) {
+        $full_query = "SELECT * from btc order by id desc";
+    } else {
+        $base_query = "SELECT * from btc WHERE ";
+        $full_query = $base_query;
+        $suffix = " order by id desc";
 
+        $iterasi = 1;
+        foreach ($types as $key => $value) {
+            if ($iterasi == 1) {
+                $full_query .= call_user_func($value);
+            } else {
+                $full_query .= " AND " . call_user_func($value);
+            }
 
-    $iterasi = 1;
-    foreach ($types as $key => $value) {
-        if ($iterasi == 1) {
-            $full_query .= call_user_func($value);
-        } else {
-            $full_query .= " AND " . call_user_func($value);
+            $iterasi += 1;
         }
-
-        $iterasi += 1;
+        $full_query .= $suffix;
     }
-    $full_query .= $suffix;
 
     return $full_query;
 }

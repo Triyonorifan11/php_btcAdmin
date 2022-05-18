@@ -5,7 +5,10 @@ function auto_complete()
 {
     global $mysqli;
     $keyword = $_GET['keysearch'];
-    $query = "SELECT id from btc WHERE id LIKE '%$keyword%' order by id desc";
+    $query = "SELECT id,level,jenis from btc WHERE id LIKE '%$keyword%' OR 
+                                                    level LIKE '%$keyword%' OR 
+                                                    jenis LIKE '%$keyword%'
+                                                    order by id desc LIMIT 0,10";
 
     $x_query = mysqli_query($mysqli, $query);
 
@@ -13,7 +16,9 @@ function auto_complete()
 
     while ($row = mysqli_fetch_array($x_query)) {
         $id_array[] = [
-            'id' => $row['id']
+            'id' => $row['id'],
+            'level' => $row['level'],
+            'jenis' => $row['jenis']
         ];
     }
 

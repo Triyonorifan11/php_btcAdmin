@@ -7,7 +7,7 @@ function getLevel()
     global $mysqli;
     $query = "SELECT DISTINCT level from btc WHERE level != '' order by level asc";
 
-    return mysqli_query($mysqli, $query);;
+    return mysqli_query($mysqli, $query);
 }
 
 function getJenis()
@@ -22,14 +22,6 @@ function getSinyal()
 {
     global $mysqli;
     $query = "SELECT DISTINCT sinyal from btc WHERE sinyal != '' order by sinyal asc";
-
-    return mysqli_query($mysqli, $query);
-}
-
-function getHargaIdr()
-{
-    global $mysqli;
-    $query = "SELECT DISTINCT hargaidr from btc WHERE hargaidr != '' order by hargaidr asc";
 
     return mysqli_query($mysqli, $query);
 }
