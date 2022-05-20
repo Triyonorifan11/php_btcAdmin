@@ -6,7 +6,7 @@ keysearch.addEventListener('keyup', function () {
     // buat objek ajax
     // console.log(keysearch.value);
 
-    fetch('http://localhost:1109/pemWeb/btc/api/autoComplete.php?keysearch=' + keysearch.value)
+    fetch('http://localhost:1109/pemWeb/btcAdmin/api/autoComplete.php?keysearch=' + keysearch.value)
         .then(response => response.json())
         .then(data => {
             // console.log(data)
@@ -33,6 +33,5 @@ function renderAutoComplete(container, target, data) {
 }
 
 function showData(id) {
-    console.log("oke");
-    window.location.href = "http://localhost:1109/pemWeb/btc?id=" + id
+    window.location.href = "http://localhost:1109/pemWeb/btcAdmin/table.php?id=" + id
 }

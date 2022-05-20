@@ -65,9 +65,10 @@ function pagination_info($page, $query = null)
     ];
 }
 
+// link banyak pagination
 function pagination_links($page)
 {
-
+    // cek paramter tanggal
     $startCheck = isset($_GET['start_date']) ? "&start_date=" . $_GET['start_date'] : "";
     $endCheck = isset($_GET['end_date']) ? "&end_date=" . $_GET['end_date'] : "";
 

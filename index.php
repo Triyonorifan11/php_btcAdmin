@@ -1,4 +1,5 @@
 <?php
+
 include_once("koneksi.php");
 include_once("function/pagination.php");
 include_once("function/filter2.php");
@@ -38,8 +39,6 @@ $ops_sinyal_start = getSinyal();
 $ops_sinyal_end = getSinyal();
 
 
-
-
 ?>
 
 <!doctype html>
@@ -54,8 +53,6 @@ $ops_sinyal_end = getSinyal();
 </head>
 
 <body>
-
-
 
     <div class="container">
         <h1 class="text-center">Penambangan Sinyal Harian INDODAX</h1>
@@ -95,11 +92,11 @@ $ops_sinyal_end = getSinyal();
 
         <div class="my-4 col-md-12 d-md-flex">
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary me-1" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" class="btn btn-primary me-1 mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 <i class="bi bi-funnel"></i>
             </button>
             <!-- href relative -->
-            <a href="http://localhost:1109/pemWeb/btc/" class="btn btn-danger me-auto"><i class="bi bi-arrow-clockwise"></i> Reset</a>
+            <a href="http://localhost:1109/pemWeb/btc/" class="btn btn-danger me-auto mb-3"><i class="bi bi-arrow-clockwise"></i> Reset</a>
 
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -549,10 +546,10 @@ $ops_sinyal_end = getSinyal();
                         <?php endwhile; ?>
                     </tbody>
                 </table>
-                <p>Data ditemukan = <?= $total_data; ?></p>
+
             </div>
         </div>
-
+        <p>Data ditemukan = <?= $total_data; ?></p>
     </div>
 
     <script src="js/script.js?id=1"></script>

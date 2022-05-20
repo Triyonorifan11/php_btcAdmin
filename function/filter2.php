@@ -47,7 +47,7 @@ function filter_vol_usd()
 function generate_query(array $types, $sort)
 {
     if (empty($types)) {
-        $full_query = "SELECT * from btc order by $sort asc";
+        $full_query = "SELECT * from btc order by $sort desc";
     } else {
         $base_query = "SELECT * from btc WHERE ";
         $full_query = $base_query;
