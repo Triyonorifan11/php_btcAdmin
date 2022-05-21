@@ -9,7 +9,9 @@ function search($keyword)
     $query = "SELECT * from btc WHERE id LIKE '%$keyword%' order by id desc";
     $data = pagination_info($page, $query);
 
-    $showData = mysqli_query($mysqli, $query);
+    $q_one = $query .  " limit " . $data['first'] . "," . $data['batas'];
+
+    $showData = mysqli_query($mysqli, $q_one);
     return [
         'show' => $showData,
         'pagination_info' => $data

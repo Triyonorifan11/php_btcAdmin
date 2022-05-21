@@ -5,11 +5,11 @@ function level() {
     fetch('http://localhost:1109/pemWeb/btcAdmin/api/chart_info.php')
         .then(response => response.json())
         .then(data => {
-            // console.log(data)
+            console.log(data)
             data.forEach((value) => {
                 let level = value.level
                 let tanggal = value.tanggal
-                console.log(level);
+                // console.log(level);
             });
 
             // renderChartLevelTanggal(data);

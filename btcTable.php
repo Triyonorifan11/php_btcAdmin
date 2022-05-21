@@ -46,11 +46,11 @@ $ops_sinyal_end = getSinyal();
 
     <div class="my-4 col-md-12 d-md-flex">
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary me-1 mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button type="button" class="btn btn-info me-1 mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
             <i class="bi bi-funnel"></i>
         </button>
         <!-- href relative -->
-        <a href="http://localhost:1109/pemWeb/btcAdmin/table.php?" class="btn btn-danger me-auto mb-3"><i class="bi bi-arrow-clockwise"></i> Reset</a>
+        <a href="http://localhost:1109/pemWeb/btcAdmin/table.php?" class="btn btn-primary me-auto mb-3"><i class="bi bi-arrow-clockwise"></i> Reset</a>
 
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -186,7 +186,7 @@ $ops_sinyal_end = getSinyal();
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">GO</button>
+                        <button type="submit" class="btn btn-info">GO</button>
                     </div>
                     </form>
                 </div>
@@ -526,7 +526,7 @@ $ops_sinyal_end = getSinyal();
                     <?php for ($i = $start_number; $i <= $end_number; $i++) : ?>
                         <li class="page-item">
                             <?php if ($i == $page) : ?>
-                                <a class="page-link active text-light" href="<?= pagination_links($i); ?>" class="btn btn-secondary"><?= $i; ?></a>
+                                <a class="page-link bg-gradient-warning text-light" href="<?= pagination_links($i); ?>" class="btn btn-secondary"><?= $i; ?></a>
                             <?php else : ?>
                                 <a class="page-link" href="<?= pagination_links($i) ?>" class="btn btn-outline-secondary"><?= $i; ?></a>
                             <?php endif; ?>

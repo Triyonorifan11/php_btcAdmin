@@ -7,7 +7,14 @@
     <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="assets/img/icons/Bitcoin-BTC-icon.png">
     <title>
-        Pengumpulan Sinyal BTC
+        <?php if ($_SESSION['page'] == 'dashboard') {
+            echo "BTC Sinyal - Dashboard";
+        } elseif ($_SESSION['page'] == 'table') {
+            echo "BTC Sinyal - Table";
+        } else {
+            echo "BTC Sinyal - Chart";
+        }
+        ?>
     </title>
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
