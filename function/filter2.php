@@ -44,14 +44,21 @@ function filter_vol_usd()
 }
 
 // sambung query sesuai filter
-function generate_query(array $types, $sort)
+function generate_query(array $types, $sort = "id", array $column = [])
 {
-    if (empty($types)) {
-        $full_query = "SELECT * from btc order by $sort desc";
+    if (empty($column)) {
+        $Q_column = "*";
     } else {
-        $base_query = "SELECT * from btc WHERE ";
+        $Q_column = implode(",", $column);
+    }
+
+
+    if (empty($types)) {
+        $full_query = "SELECT " . $Q_column . " from btc order by $sort desc";
+    } else {
+        $base_query = "SELECT " . $Q_column . " from btc WHERE ";
         $full_query = $base_query;
-        $suffix = " order by id desc";
+        $suffix = " order by $sort desc";
 
         $iterasi = 1;
         foreach ($types as $key => $value) {
@@ -145,6 +152,7 @@ function get_filter_data()
     $p_info = pagination_info($page, $q_all);
 
     $q_one = $q_all .  " limit " . $p_info['first'] . "," . $p_info['batas'];
+
 
     $show_limit = mysqli_query($mysqli, $q_one);
 
