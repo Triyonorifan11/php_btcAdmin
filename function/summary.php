@@ -11,8 +11,6 @@ function getLastHarga()
 
     $last = mysqli_fetch_row($sqli);
 
-
-
     // var_dump($last);
 
     return number_format($last[0], 0, ',', '.');

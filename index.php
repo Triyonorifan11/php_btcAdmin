@@ -122,7 +122,6 @@ $ops_sinyal_end = getSinyal();
                                     </div>
                                 </section>
 
-
                                 <!-- filter level -->
                                 <label for="" class="">Filter Level</label>
                                 <section class="col-12 d-flex">

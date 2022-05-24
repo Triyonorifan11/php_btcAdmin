@@ -1,10 +1,11 @@
 <?php
 session_start();
 $_SESSION['page'] = 'chart';
-$_SESSION['pages'] = 'chart_level';
+$_SESSION['pages'] = 'chart_level_filter';
 
 include_once("components/headhtml.php");
 include_once("function/query.php");
+
 $ops_jenis = getJenis();
 ?>
 
@@ -22,20 +23,7 @@ $ops_jenis = getJenis();
 
             <!-- Chart info -->
 
-            <div class="col-12 mb-5">
-                <div class="card">
-                    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                        <div class="bg-gradient-warning shadow-warning border-radius-lg pt-4 pb-3">
-                            <h6 class="text-white text-capitalize ps-3">Level BTC</h6>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div>
-                            <canvas id="level"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php include_once("components/chart/view/view_chart_filter_jenis.php") ?>
 
             <!-- footer -->
             <?php include_once("components/footer.php") ?>
@@ -47,7 +35,7 @@ $ops_jenis = getJenis();
     <!-- chart JS -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- <script src="chart.js?"></script> -->
-    <?php include_once("components/chart/chart_level.php"); ?>
+    <?php include_once("components/chart/chart_filter_jenis.php"); ?>
 
 
 

@@ -34,6 +34,41 @@
                     </div>
                     <span class="nav-link-text ms-1">Chart</span>
                 </a>
+                <?php if ($_SESSION['page'] == 'chart') : ?>
+                    <ul class="nav-item mb-1 mt-1">
+                        <a class="nav-link <?= $_SESSION['page'] === 'chart' && $_SESSION['pages'] === 'chart_level' ? 'active bg-gradient-secondary' : '' ?> text-white " href="chart.php">
+                            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                                <span class="material-symbols-rounded">
+                                    monitoring
+                                </span>
+                            </div>
+                            <span class="nav-link-text ms-1">Chart 1</span>
+                        </a>
+                    </ul>
+
+                    <ul class="nav-item mb-1">
+                        <a class="nav-link <?= $_SESSION['page'] === 'chart' && $_SESSION['pages'] === 'chart_level_filter' ? 'active bg-gradient-secondary' : '' ?> text-white " href="chart2.php">
+                            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                                <span class="material-symbols-rounded">
+                                    monitoring
+                                </span>
+                            </div>
+                            <span class="nav-link-text ms-1">Chart 2</span>
+                        </a>
+                    </ul>
+
+                    <ul class="nav-item mb-1">
+                        <a class="nav-link <?= $_SESSION['page'] === 'chart' && $_SESSION['pages'] === 'chart_date_filter' ? 'active bg-gradient-secondary' : '' ?> text-white " href="chart3.php">
+                            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                                <span class="material-symbols-rounded">
+                                    monitoring
+                                </span>
+                            </div>
+                            <span class="nav-link-text ms-1">Chart 3</span>
+                        </a>
+                    </ul>
+                <?php endif; ?>
+
             </li>
 
         </ul>

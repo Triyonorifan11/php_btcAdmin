@@ -2,30 +2,29 @@
 include_once __DIR__ . "/../../koneksi.php";
 include_once __DIR__ . "/../../function/chartJS.php";
 
-$dataChart = chart_filter_jenis();
+$dataChart_jenis = chart_filter_jenis();
 ?>
 
 <script>
-    const id_level = document.getElementById("level");
+    const id_filter_jenis = document.getElementById("chart_filter_jenis");
 
+    const tanggal_jenis = <?= json_encode($dataChart_jenis['tanggal']); ?>;
 
-    const tanggals = <?= json_encode($dataChart['tanggal']); ?>;
+    const level_data_jenis = <?= json_encode($dataChart_jenis['level']); ?>;
+    console.log(level_data_jenis);
 
-    const level_data = <?= json_encode($dataChart['level']); ?>;
-    console.log(level_data);
-
-    const uniqLevel = [...new Set(level_data)];
+    const uniqLevel = [...new Set(level_data_jenis)];
 
     const chartLaslevel = new Chart(
-        id_level, {
+        id_filter_jenis, {
             type: 'line',
             data: {
-                labels: tanggals,
+                labels: tanggal_jenis,
                 datasets: [{
                     label: 'Level BTC',
                     backgroundColor: 'rgba(255, 201, 60, 0.3)',
                     borderColor: 'rgb(255, 201, 60)',
-                    data: level_data,
+                    data: level_data_jenis,
                     fill: 'start',
                     stepped: true,
                     yAxisID: 'y2',
