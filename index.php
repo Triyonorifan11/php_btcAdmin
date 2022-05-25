@@ -1,5 +1,8 @@
 <?php
 
+header("Location: dashboard.php");
+exit;
+
 include_once("koneksi.php");
 include_once("function/pagination.php");
 include_once("function/filter2.php");

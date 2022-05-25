@@ -4,6 +4,7 @@ $_SESSION['page'] = 'dashboard';
 
 include_once("function/summary.php");
 
+$data_summary = get_last_info_BTC();
 
 ?>
 
@@ -45,11 +46,11 @@ include_once("function/summary.php");
           <div class="card">
             <div class="card-header p-3 pt-2">
               <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10">person</i>
+                <i class="material-icons opacity-10">weekend</i>
               </div>
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">Harga(Rp) Terakhir</p>
-                <h4 class="mb-0">Rp <?= getLastHarga(); ?></h4>
+                <h4 class="mb-0">Rp <?= $data_summary['hargaidr']; ?></h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
@@ -63,11 +64,11 @@ include_once("function/summary.php");
           <div class="card">
             <div class="card-header p-3 pt-2">
               <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10">person</i>
+                <i class="material-icons opacity-10">weekend</i>
               </div>
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">Harga($) terakhir</p>
-                <h4 class="mb-0">$ <?= getLastUSD(); ?></h4>
+                <h4 class="mb-0">$ <?= $data_summary['hargausd'];  ?></h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
@@ -84,8 +85,8 @@ include_once("function/summary.php");
                 <i class="material-icons opacity-10">weekend</i>
               </div>
               <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">Sales</p>
-                <h4 class="mb-0">$103,430</h4>
+                <p class="text-sm mb-0 text-capitalize">Volume IDR terakhir</p>
+                <h4 class="mb-0"><?= $data_summary['volidr']; ?></h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
@@ -99,12 +100,12 @@ include_once("function/summary.php");
         <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4 mt-xl-4">
           <div class="card">
             <div class="card-header p-3 pt-2">
-              <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
+              <div class="icon icon-lg icon-shape bg-gradient-warning shadow-warning text-center border-radius-xl mt-n4 position-absolute">
                 <i class="material-icons opacity-10">weekend</i>
               </div>
               <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">Sales</p>
-                <h4 class="mb-0">$103,430</h4>
+                <p class="text-sm mb-0 text-capitalize">Volume $ terakhir</p>
+                <h4 class="mb-0"><?= $data_summary['volusd']; ?></h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
@@ -126,7 +127,7 @@ include_once("function/summary.php");
         </div>
         <div class="card-body">
           <div>
-            <canvas id="test_chart"></canvas>
+            <canvas id="chart_harga_idr"></canvas>
           </div>
         </div>
       </div>
@@ -144,7 +145,7 @@ include_once("function/summary.php");
   <!-- chart JS -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <?php include_once("api/chartdashboard.php"); ?>
+  <?php include_once("components/chart/chartdashboard.php"); ?>
   <!--   Core JS Files   -->
   <script src="assets/js/core/bootstrap.min.js"></script>
   <script src="assets/js/plugins/perfect-scrollbar.min.js"></script>

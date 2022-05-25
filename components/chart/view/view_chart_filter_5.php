@@ -1,10 +1,10 @@
-<!-- chart 3 -->
+<!-- chart 5 -->
 
 <div class="col-12 mb-5">
     <div class="card">
         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
             <div class="bg-gradient-warning shadow-warning border-radius-lg pt-4 pb-3">
-                <h6 class="text-white text-capitalize ps-3">Chart Filter by Jenis & Date Picker</h6>
+                <h6 class="text-white text-capitalize ps-3">Chart Last Buy and Last Sell</h6>
 
             </div>
         </div>
@@ -37,14 +37,14 @@
 
                         <div class="col-4">
                             <button type="submit" class="btn btn-info mx-1">GO</button>
-                            <a href="http://localhost:1109/pemWeb/btcAdmin/chart3.php" class="btn btn-danger me-auto mb-3"><i class="bi bi-arrow-clockwise"></i> Reset</a>
+                            <a href="http://localhost:1109/pemWeb/btcAdmin/chart5.php" class="btn btn-danger me-auto mb-3"><i class="bi bi-arrow-clockwise"></i> Reset</a>
                         </div>
                     </div>
 
                 </form>
             </div>
             <div>
-                <canvas id="chart_datePicker"></canvas>
+                <canvas id="chart_last_buy_sell"></canvas>
             </div>
         </div>
     </div>

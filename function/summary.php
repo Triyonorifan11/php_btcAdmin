@@ -1,21 +1,6 @@
 <?php
 include_once __DIR__ . "/../koneksi.php";
 
-function getLastHarga()
-{
-    global $mysqli;
-
-    $query = "SELECT hargaidr from btc order by tanggal desc limit 0,1";
-
-    $sqli = mysqli_query($mysqli, $query);
-
-    $last = mysqli_fetch_row($sqli);
-
-    // var_dump($last);
-
-    return number_format($last[0], 0, ',', '.');
-}
-
 function getTotalData()
 {
     global $mysqli;
@@ -25,19 +10,27 @@ function getTotalData()
     return number_format($jumlah_data, 0, ',', '.');
 }
 
-function getLastUSD()
+function get_last_info_BTC()
 {
     global $mysqli;
 
-    $query = "SELECT hargausdt from btc order by tanggal desc limit 0,1";
+    $query = "SELECT * from btc order by tanggal desc limit 0,1";
 
     $sqli = mysqli_query($mysqli, $query);
 
-    $lastusd = mysqli_fetch_row($sqli);
+    $get_data = mysqli_fetch_row($sqli);
 
+    $hargaidr = number_format($get_data[4], 0, ',', '.');
+    $hargausd = number_format($get_data[5], 0, ',', '.');
+    // $volidr = number_format($get_data[6], 0, ',', '.');
+    $volusdt = number_format($get_data[7], 0, ',', '.');
 
+    $volidr = $get_data[6];
 
-    // var_dump($last);
-
-    return number_format($lastusd[0], 0, ',', '.');
+    return [
+        'hargaidr' => $hargaidr,
+        'hargausd' => $hargausd,
+        'volidr' => $volidr,
+        'volusd' => $volusdt
+    ];
 }

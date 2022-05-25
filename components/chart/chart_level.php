@@ -11,11 +11,9 @@ $dataChart = chart_level();
 <script>
     const id_level = document.getElementById("level");
 
-
     const tanggals = <?= json_encode($dataChart['tanggal']); ?>;
 
     const level_data = <?= json_encode($dataChart['level']); ?>;
-    console.log(level_data);
 
     const uniqLevel = [...new Set(level_data)];
 

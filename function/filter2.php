@@ -43,6 +43,7 @@ function filter_vol_usd()
     return "volusdt BETWEEN '" . $_GET['start_vol_usd'] . "' AND '" . $_GET['end_vol_usd'] . "'";
 }
 
+
 // sambung query sesuai filter
 function generate_query(array $types, $sort = "id", array $column = [])
 {
@@ -108,12 +109,10 @@ function get_filter_data()
     $filter_sort = "id";
 
     if ((isset($start_date) && $start_date != "") || (isset($end_date) && $end_date != "")) {
-        // array_push($filter_type, "tanggal");
         $filter_type['tanggal'] = 'filter_tanggal';
     }
 
     if (isset($level) && $level != "") {
-        // array_push($filter_type, "level");
         $filter_type['level'] = 'filter_level';
     }
 
